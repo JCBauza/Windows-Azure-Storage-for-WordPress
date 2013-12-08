@@ -35,7 +35,7 @@ use WindowsAzure\Blob\Models\ListContainersOptions;
 use WindowsAzure\Blob\Models\ListContainersResult;
 use WindowsAzure\Blob\Models\CreateContainerOptions;
 use WindowsAzure\Blob\Models\GetContainerPropertiesResult;
-use WindowsAzure\Blob\Models\GetContainerAclResult;
+use WindowsAzure\Blob\Models\GetContainerACLResult;
 use WindowsAzure\Blob\Models\SetContainerMetadataOptions;
 use WindowsAzure\Blob\Models\DeleteContainerOptions;
 use WindowsAzure\Blob\Models\ListBlobsOptions;
@@ -337,7 +337,7 @@ class BlobRestProxy extends ServiceRestProxy implements IBlob
     private function _addOptionalRangeHeader($headers, $start, $end)
     {
         if (!is_null($start) || !is_null($end)) {
-            $range = $start . '-' . $end;
+            $range      = $start . '-' . $end;
             $rangeValue = 'bytes=' . $range;
             $this->addOptionalHeader($headers, Resources::RANGE, $rangeValue);
         }
@@ -2064,7 +2064,7 @@ class BlobRestProxy extends ServiceRestProxy implements IBlob
             );
         }
         
-        $headers         = $this->addOptionalAccessConditionHeader(
+        $headers = $this->addOptionalAccessConditionHeader(
             $headers, $options->getAccessCondition()
         );
         

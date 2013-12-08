@@ -34,7 +34,7 @@ use WindowsAzure\Common\Internal\Utilities;
  * @copyright 2012 Microsoft Corporation
  * @license   http://www.apache.org/licenses/LICENSE-2.0  Apache License 2.0
  * @version   Release: @package_version@
- * @link      https://github.com/WindowsAzure/azure-sdk-for-php
+ * @link      http://msdn.microsoft.com/en-us/library/windowsazure/hh780753
  */
 
 class RuleDescription
@@ -117,16 +117,16 @@ class RuleDescription
                         (string)$filterItemArray['SqlExpression']
                     );
                 }
+                if (array_key_exists('CompatibilityLevel', $filterItemArray)) {
+                    $filter->setCompatibilityLevel(
+                        (integer)$filterItemArray['CompatibilityLevel']
+                    );
+                }
+
                 break;
                
             default :
                 $filter = new Filter();                
-            }
-
-            if (array_key_exists('CompatibilityLevel', $filterItemArray)) {
-                $filter->setCompatibilityLevel(
-                    (integer)$filterItemArray['CompatibilityLevel']
-                );
             }
 
             $ruleDescription->setFilter($filter);
